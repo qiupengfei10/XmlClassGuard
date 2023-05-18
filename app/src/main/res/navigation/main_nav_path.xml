@@ -22,5 +22,24 @@
         <argument
             android:name="test"
             app:argType="com.ljx.example.test.Test" />
+        <action
+            android:id="@+id/gotoAnchorCall"
+            app:destination="@+id/anchorCallingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/anchorCallingFragment"
+        android:name="com.ljx.example.ui.calling.anchor.AnchorCallingFragment"
+        android:label="AnchorCallingFragment" >
+
+        <argument
+            android:name="callInviteData"
+            app:argType="com.ljx.example.live.CallInviteData"
+            app:nullable="false" />
+
+        <argument
+            android:name="callType"
+            app:argType="integer"
+            app:nullable="false" />
+
     </fragment>
 </navigation>
