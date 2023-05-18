@@ -1,6 +1,6 @@
-[![](https://jitpack.io/v/qiupengfei10/XmlClassGuard.svg)](https://jitpack.io/#qiupengfei10/XmlClassGuard)
-[![](https://img.shields.io/badge/change-更新日志-success.svg)](https://github.com/qiupengfei10/XmlClassGuard/wiki)
-[![](https://img.shields.io/badge/FAQ-常见问题-success.svg)](https://github.com/qiupengfei10/XmlClassGuard/wiki/FAQ)
+[![](https://jitpack.io/v/liujingxing/XmlClassGuard.svg)](https://jitpack.io/#liujingxing/XmlClassGuard)
+[![](https://img.shields.io/badge/change-更新日志-success.svg)](https://github.com/liujingxing/XmlClassGuard/wiki)
+[![](https://img.shields.io/badge/FAQ-常见问题-success.svg)](https://github.com/liujingxing/XmlClassGuard/wiki/FAQ)
 [![](https://img.shields.io/badge/掘金-@刘一刀-blue.svg)](https://juejin.cn/user/272334612601559/posts)
 
 ***加我微信 ljx-studio 拉你进微信群(备注XmlClassGuard，否则不通过)***
@@ -75,7 +75,7 @@ buildscript {
         maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath "com.github.qiupengfei10:XmlClassGuard:1.1.3-beta5"
+        classpath "com.github.liujingxing:XmlClassGuard:1.1.3-beta3"
     }
 }
 ```
@@ -259,7 +259,7 @@ class mapping:
 
 - `XmlClassGuard`不会更改`proguard-rules.pro`文件的内容，所以，类混淆后，如果该文件内容有混淆前的类或目录，也记得手动更改
 
-- `XmlClassGuard`只会帮你更改`包名+类名`，并同步到其它文件中，不会更改你的任何代码逻辑，如混淆后，出现部分功能不正常问题，需要你自己查找原因，如果是`XmlClassGuard`的问题，欢迎提[issue](https://github.com/qiupengfei10/XmlClassGuard/issues)或[PR](https://github.com/qiupengfei10/XmlClassGuard/pulls)
+- `XmlClassGuard`只会帮你更改`包名+类名`，并同步到其它文件中，不会更改你的任何代码逻辑，如混淆后，出现部分功能不正常问题，需要你自己查找原因，如果是`XmlClassGuard`的问题，欢迎提[issue](https://github.com/liujingxing/XmlClassGuard/issues)或[PR](https://github.com/liujingxing/XmlClassGuard/pulls)
 
 ## Donations
 如果它对你帮助很大，并且你很想支持库的后续开发和维护，那么你可以扫下方二维码随意打赏我，就当是请我喝杯咖啡或是啤酒，开源不易，感激不尽

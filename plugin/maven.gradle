@@ -4,7 +4,7 @@ publishing {
     publications {
         release(MavenPublication) {
             from components.java
-            groupId 'com.github.qiupengfei10'
+            groupId 'com.github.liujingxing'
             artifactId 'XmlClassGuard'
             version "$plugin_version"
         }
