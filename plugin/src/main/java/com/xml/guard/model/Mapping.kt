@@ -6,7 +6,7 @@ import com.xml.guard.utils.getDirPath
 import com.xml.guard.utils.insertImportXxxIfAbsent
 import com.xml.guard.utils.javaDirs
 import com.xml.guard.utils.removeSuffix
-import com.xml.guard.utils.toLetterStr
+import com.xml.guard.utils.toObfuscatePackageName
 import com.xml.guard.utils.toUpperLetterStr
 import org.gradle.api.Project
 import java.io.BufferedWriter
@@ -154,29 +154,15 @@ class Mapping {
     //生成混淆的包名
     private fun generateObfuscatePackageName(): String {
 //        var obfuscatePackage = (++packageNameIndex).toLetterStr()
-        var obfuscatePackage = fetchObfuscatePackageName()
+        var obfuscatePackage = toObfuscatePackageName()
         while (obfuscatePackage in packageNameBlackList) {
             //过滤黑名单
 //            obfuscatePackage = (++packageNameIndex).toLetterStr()
-            obfuscatePackage = fetchObfuscatePackageName()
+            obfuscatePackage = toObfuscatePackageName()
         }
         return obfuscatePackage
     }
 
-    /**
-     * 随机包名
-     */
-    private fun fetchObfuscatePackageName(): String {
-        val size = 26 //26个字母
-        val sb = StringBuilder()
-        var num = (Math.random() * 4).toInt() + 2
-        do {
-            val char = ((Math.random() * 100) % size).toChar()
-            sb.append(char)
-            num--
-        } while (num > 0) //
-        return sb.reverse().toString()
-    }
 
 
     //生成混淆的类名
