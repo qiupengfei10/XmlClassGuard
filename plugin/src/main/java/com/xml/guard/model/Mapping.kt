@@ -81,7 +81,8 @@ class Mapping {
                 val obfuscateRelativePath = obfuscatePath.replace(".", File.separator)
                 val rawRelativePath = rawClassPath.replace(".", File.separator)
                 //替换原始类路径
-                val newFile = File(file.absolutePath.replace(rawRelativePath, obfuscateRelativePath))
+                val newFile =
+                    File(file.absolutePath.replace(rawRelativePath, obfuscateRelativePath))
                 if (!newFile.exists()) newFile.parentFile.mkdirs()
                 newFile.writeText(file.readText())
                 file.delete()
@@ -152,13 +153,31 @@ class Mapping {
 
     //生成混淆的包名
     private fun generateObfuscatePackageName(): String {
-        var obfuscatePackage = (++packageNameIndex).toLetterStr()
+//        var obfuscatePackage = (++packageNameIndex).toLetterStr()
+        var obfuscatePackage = fetchObfuscatePackageName()
         while (obfuscatePackage in packageNameBlackList) {
             //过滤黑名单
-            obfuscatePackage = (++packageNameIndex).toLetterStr()
+//            obfuscatePackage = (++packageNameIndex).toLetterStr()
+            obfuscatePackage = fetchObfuscatePackageName()
         }
         return obfuscatePackage
     }
+
+    /**
+     * 随机包名
+     */
+    private fun fetchObfuscatePackageName(): String {
+        val size = 26 //26个字母
+        val sb = StringBuilder()
+        var num = (Math.random() * 4).toInt() + 2
+        do {
+            val char = ((Math.random() * 100) % size).toChar()
+            sb.append(char)
+            num--
+        } while (num > 0) //
+        return sb.reverse().toString()
+    }
+
 
     //生成混淆的类名
     private fun generateObfuscateClassName(): String {
