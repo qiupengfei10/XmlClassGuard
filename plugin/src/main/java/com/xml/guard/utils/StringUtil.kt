@@ -101,8 +101,7 @@ fun String.isWord(index: Int, oldValue: String): Boolean {
 
 // Int 转 大写字符串
 fun Long.toUpperLetterStr(): String {
-//    return toLetterStr(true)
-    return toObfuscatePackageName(true)
+    return toLetterStr(true)
 }
 
 // Int 转 大/小字符串
@@ -116,22 +115,6 @@ fun Long.toLetterStr(upperCase: Boolean = false): String {
         sb.append(char)
         num /= size
     } while (num > 0)
-    return sb.reverse().toString()
-}
-
-/**
- * 随机包名
- */
-fun toObfuscatePackageName(upperCase:Boolean = false): String {
-    val size = 26 //26个字母
-    val offSize = if (upperCase) 65 else 97
-    val sb = StringBuilder()
-    var num = (Math.random() * 4).toInt() + 2
-    do {
-        val char = ((Math.random() * 100) % size + offSize).toChar()
-        sb.append(char)
-        num--
-    } while (num > 0) //
     return sb.reverse().toString()
 }
 

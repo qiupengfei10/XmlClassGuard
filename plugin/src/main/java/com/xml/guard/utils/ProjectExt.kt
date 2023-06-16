@@ -1,6 +1,7 @@
 package com.xml.guard.utils
 
 import com.android.build.gradle.BaseExtension
+import com.google.gson.Gson
 import groovy.util.Node
 import groovy.util.NodeList
 import groovy.xml.XmlParser
@@ -49,6 +50,12 @@ fun Project.javaDirs(path: String = ""): List<File> {
 fun Project.resDirs(path: String = ""): List<File> {
     val sourceSet = (extensions.getByName("android") as BaseExtension).sourceSets
     return sourceSet.getByName("main").res.srcDirs.map { File(it, path) }
+}
+
+//返回res目录,可能有多个
+fun Project.assetsDirs(path: String = ""): List<File> {
+    val sourceSet = (extensions.getByName("android") as BaseExtension).sourceSets
+    return sourceSet.getByName("main").assets.srcDirs.map { File(it, path) }
 }
 
 //返回manifest文件目录,有且仅有一个

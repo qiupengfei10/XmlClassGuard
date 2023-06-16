@@ -26,4 +26,7 @@ open class GuardExtension {
     var packageChange = HashMap<String, String>()
 
     var moveDir = HashMap<String, String>()
+
+    //emoji的文件夹名
+    var emojiFile: File? = null
 }

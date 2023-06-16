@@ -6,7 +6,7 @@ import com.xml.guard.utils.getDirPath
 import com.xml.guard.utils.insertImportXxxIfAbsent
 import com.xml.guard.utils.javaDirs
 import com.xml.guard.utils.removeSuffix
-import com.xml.guard.utils.toObfuscatePackageName
+import com.xml.guard.utils.toLetterStr
 import com.xml.guard.utils.toUpperLetterStr
 import org.gradle.api.Project
 import java.io.BufferedWriter
@@ -81,8 +81,7 @@ class Mapping {
                 val obfuscateRelativePath = obfuscatePath.replace(".", File.separator)
                 val rawRelativePath = rawClassPath.replace(".", File.separator)
                 //替换原始类路径
-                val newFile =
-                    File(file.absolutePath.replace(rawRelativePath, obfuscateRelativePath))
+                val newFile = File(file.absolutePath.replace(rawRelativePath, obfuscateRelativePath))
                 if (!newFile.exists()) newFile.parentFile.mkdirs()
                 newFile.writeText(file.readText())
                 file.delete()
@@ -153,17 +152,13 @@ class Mapping {
 
     //生成混淆的包名
     private fun generateObfuscatePackageName(): String {
-//        var obfuscatePackage = (++packageNameIndex).toLetterStr()
-        var obfuscatePackage = toObfuscatePackageName()
+        var obfuscatePackage = (++packageNameIndex).toLetterStr()
         while (obfuscatePackage in packageNameBlackList) {
             //过滤黑名单
-//            obfuscatePackage = (++packageNameIndex).toLetterStr()
-            obfuscatePackage = toObfuscatePackageName()
+            obfuscatePackage = (++packageNameIndex).toLetterStr()
         }
         return obfuscatePackage
     }
-
-
 
     //生成混淆的类名
     private fun generateObfuscateClassName(): String {

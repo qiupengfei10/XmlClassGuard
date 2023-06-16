@@ -1,12 +1,16 @@
 package com.xml.guard
 
 import com.android.build.gradle.AppExtension
+import com.google.gson.Gson
 import com.xml.guard.entensions.GuardExtension
 import com.xml.guard.model.aabResGuard
 import com.xml.guard.model.andResGuard
+import com.xml.guard.tasks.CheckStringTask
+import com.xml.guard.tasks.EmojiGuardTask
 import com.xml.guard.tasks.FindConstraintReferencedIdsTask
 import com.xml.guard.tasks.MoveDirTask
 import com.xml.guard.tasks.PackageChangeTask
+import com.xml.guard.tasks.RawGuardTask
 import com.xml.guard.tasks.XmlClassGuardTask
 import com.xml.guard.utils.AgpVersion
 import org.gradle.api.GradleException
@@ -24,9 +28,13 @@ class XmlClassGuardPlugin : Plugin<Project> {
         checkApplicationPlugin(project)
         println("XmlClassGuard version is $version, agpVersion=${AgpVersion.agpVersion}")
         val guardExtension = project.extensions.create("xmlClassGuard", GuardExtension::class.java)
+//        println("XmlClassGuard guardExtension:${Gson().toJson(guardExtension)}")
         project.tasks.create("xmlClassGuard", XmlClassGuardTask::class.java, guardExtension)
         project.tasks.create("packageChange", PackageChangeTask::class.java, guardExtension)
         project.tasks.create("moveDir", MoveDirTask::class.java, guardExtension)
+        project.tasks.create("checkString", CheckStringTask::class.java, guardExtension)
+        project.tasks.create("emojiGuard", EmojiGuardTask::class.java, guardExtension)
+        project.tasks.create("rawGuard", RawGuardTask::class.java, guardExtension)
 
         val android = project.extensions.getByName("android") as AppExtension
         project.afterEvaluate {
